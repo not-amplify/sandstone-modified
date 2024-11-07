@@ -57,12 +57,12 @@ function get_frame_bundle() {
 }
 
 export class ProxyFrame {
-  constructor() {
+  constructor(iframe) {
     this.url = null;
     this.id = Math.random() + "";
-    this.iframe = document.createElement("iframe");
+    this.iframe = iframe;
     this.iframe.sandbox = "allow-scripts allow-forms allow-modals allow-pointer-lock";
-    this.iframe.setAttribute("frame-id", this.id);
+    this.iframe.setAttribute("sandstone-id", this.id);
 
     iframes[this.id] = this;
     this.send_page = rpc.create_rpc_wrapper(this.iframe, "html");
